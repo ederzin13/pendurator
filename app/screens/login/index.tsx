@@ -14,8 +14,8 @@ export default function LoginScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>Title</Text>
-        <FormInput label="Input" onChangeText={() => {}} value="" />
-        <FormInput label="Input" onChangeText={() => {}} value="" />
+        <FormInput label="E-mail" onChangeText={() => {}} value="" />
+        <FormInput label="Senha" onChangeText={() => {}} value="" isPassword />
         <Button />
       </View>
     </FullScreen>

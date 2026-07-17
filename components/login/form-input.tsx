@@ -1,6 +1,6 @@
 import { sen } from "@/assets/fonts/custom-font";
 import { typo } from "@/constants/Typography";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 type FormInputProps = {
@@ -9,7 +9,8 @@ type FormInputProps = {
   error?: boolean;
   value: string;
   keyboardType?: "number-pad" | "default";
-  onChangeText: (text: string) => void;
+  isPassword?: boolean;
+  onChangeText?: (text: string) => void;
 };
 
 export default function FormInput({
@@ -18,8 +19,11 @@ export default function FormInput({
   error,
   value,
   keyboardType = "default",
+  isPassword,
   onChangeText,
 }: FormInputProps) {
+  const [email, setEmail] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -27,9 +31,10 @@ export default function FormInput({
       <View style={styles.input}>
         <TextInput
           placeholder={placeholder}
-          onChangeText={onChangeText}
-          value={value}
+          onChangeText={setEmail}
+          value={email}
           keyboardType={keyboardType}
+          secureTextEntry={isPassword}
         ></TextInput>
 
         {error && <Text style={styles.error}>This field is mandatory!</Text>}
