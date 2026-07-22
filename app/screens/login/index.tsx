@@ -24,7 +24,7 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: spacing.innerPadding,
+    padding: spacing.formPadding,
     backgroundColor: "#dddddd",
     borderRadius: spacing.radius,
     width: "80%",
