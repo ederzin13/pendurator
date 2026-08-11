@@ -3,6 +3,7 @@ import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
@@ -12,8 +13,12 @@ type DashboardTabProps = {
 };
 
 export default function DashboardTab({ title, icon }: DashboardTabProps) {
+  const handlePress = () => {
+    router.push("/screens/clients");
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={icon && handlePress}>
       <Text style={styles.text}>{title}</Text>
       {icon ? (
         <FontAwesome6 name={icon} size={typo.h3} color="white" />

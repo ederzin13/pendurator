@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type ButtonProps = {
-  label?: string;
+  label?: string | Element;
   onClick?: () => void;
 };
 
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
     padding: spacing.innerPadding,
-    backgroundColor: "#c05d5d",
+    backgroundColor: "#ff7575",
     borderRadius: 5,
   },
 

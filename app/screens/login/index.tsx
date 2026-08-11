@@ -1,5 +1,5 @@
 import { sen } from "@/assets/fonts/custom-font";
-import Button from "@/components/button";
+import Button from "@/components/buttons/button";
 import FormInput from "@/components/login-screen/login/form-input";
 import FullScreen from "@/components/screen-wrappers/full-screen";
 import { spacing } from "@/constants/Spacing";
