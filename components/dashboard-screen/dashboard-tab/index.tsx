@@ -13,12 +13,19 @@ type DashboardTabProps = {
 };
 
 export default function DashboardTab({ title, icon }: DashboardTabProps) {
-  const handlePress = () => {
+  const handlePressClient = () => {
     router.push("/screens/clients");
   };
 
+  const handlePressDebt = () => {
+    router.push("/screens/debts");
+  };
+
   return (
-    <TouchableOpacity style={styles.container} onPress={icon && handlePress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={icon ? handlePressClient : handlePressDebt}
+    >
       <Text style={styles.text}>{title}</Text>
       {icon ? (
         <FontAwesome6 name={icon} size={typo.h3} color="white" />
