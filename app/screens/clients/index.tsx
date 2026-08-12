@@ -13,7 +13,10 @@ export default function ClientScreen() {
     <Scrollable center>
       <View style={styles.header}>
         <Stack.Screen options={{ headerShown: false }} />
-        <BackButton />
+        <View style={styles.options}>
+          <BackButton />
+          <Text style={styles.title}>Clientes</Text>
+        </View>
 
         <View style={styles.options}>
           <AddClient />
@@ -41,10 +44,18 @@ const styles = StyleSheet.create({
 
   options: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: spacing.innerPadding,
   },
 
   textBody: {
     fontFamily: sen.regular,
     fontSize: typo.h3,
+  },
+
+  title: {
+    fontFamily: sen.bold,
+    fontSize: typo.h2,
   },
 });
