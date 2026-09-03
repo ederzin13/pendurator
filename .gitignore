@@ -42,3 +42,5 @@ yarn-error.*
 
 firebaseConfig.js
 google-services.json
+
+/notes
