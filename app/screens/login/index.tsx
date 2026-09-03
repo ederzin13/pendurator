@@ -6,18 +6,14 @@ import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import useAuth from "@/states/useAuth";
 import { router, Stack } from "expo-router";
-import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function LoginScreen() {
-  const { save } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //utilizando o useAuth
+  const { token, save } = useAuth();
 
   const handleLogin = () => {
-    // TODO: substituir por uma chamada real de API e usar o token retornado
-    const fakeToken = `token-${email}`;
-    save(fakeToken);
+    save(token);
     router.push("/screens/dashboard");
   };
 
@@ -26,8 +22,8 @@ export default function LoginScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>Title</Text>
-        <FormInput label="E-mail" onChangeText={setEmail} value={email} />
-        <FormInput label="Senha" onChangeText={setPassword} value={password} isPassword />
+        <FormInput label="E-mail" onChangeText={() => {}} value="" />
+        <FormInput label="Senha" onChangeText={() => {}} value="" isPassword />
         <Button onClick={handleLogin} />
       </View>
     </FullScreen>
