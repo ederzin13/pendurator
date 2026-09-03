@@ -1,10 +1,13 @@
 import { sen } from "@/assets/fonts/custom-font";
-import React from "react";
+import useAuth from "@/states/useAuth";
 import { StyleSheet } from "react-native";
+import DashboardScreen from "./screens/dashboard";
 import LoginScreen from "./screens/login";
 
 export default function index() {
-  return <LoginScreen />;
+  const { token } = useAuth();
+
+  return token === "" ? <LoginScreen /> : <DashboardScreen />;
 }
 
 const styles = StyleSheet.create({

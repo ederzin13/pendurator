@@ -3,10 +3,9 @@ import DashboardTab from "@/components/dashboard-screen/dashboard-tab";
 import FullScreen from "@/components/screen-wrappers/full-screen";
 import { typo } from "@/constants/Typography";
 import { router, Stack } from "expo-router";
-import React from "react";
 import { StyleSheet, Text } from "react-native";
 
-export default function index() {
+export default function DashboardScreen() {
   const handleBack = () => {
     router.back();
   };
