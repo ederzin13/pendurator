@@ -3,16 +3,22 @@ import Button from "@/components/buttons/button";
 import DashboardTab from "@/components/dashboard-screen/dashboard-tab";
 import FullScreen from "@/components/screen-wrappers/full-screen";
 import { typo } from "@/constants/Typography";
+import { logoutUser } from "@/services/auth";
 import useAuth from "@/states/useAuth";
-import { router, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { StyleSheet, Text } from "react-native";
 
 export default function DashboardScreen() {
   const { clear } = useAuth();
 
-  const handleBack = () => {
-    clear();
-    router.back();
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+    } catch (e) {
+      console.warn("Falha ao deslogar no Firebase", e);
+    } finally {
+      clear();
+    }
   };
 
   return (
@@ -23,7 +29,7 @@ export default function DashboardScreen() {
       <DashboardTab title="Dívidas" />
 
       {/* {implementar mensagem de "deseja mesmo sair?"} */}
-      <Button label="Sair" onClick={handleBack} />
+      <Button label="Sair" onClick={handleLogout} />
     </FullScreen>
   );
 }

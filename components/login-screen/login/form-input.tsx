@@ -1,6 +1,5 @@
 import { sen } from "@/assets/fonts/custom-font";
 import { typo } from "@/constants/Typography";
-import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 type FormInputProps = {
@@ -22,8 +21,6 @@ export default function FormInput({
   isPassword,
   onChangeText,
 }: FormInputProps) {
-  const [email, setEmail] = useState("");
-
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -31,8 +28,8 @@ export default function FormInput({
       <View style={styles.input}>
         <TextInput
           placeholder={placeholder}
-          onChangeText={setEmail}
-          value={email}
+          onChangeText={onChangeText}
+          value={value}
           keyboardType={keyboardType}
           secureTextEntry={isPassword}
         ></TextInput>

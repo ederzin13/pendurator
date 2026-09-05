@@ -18,7 +18,7 @@ const useAuth = create<State & Actions>()(
       token: "",
       //ação de salvar o token no estado global
       // save: (token) => set({ token }),
-      save: (token) => set({ token: "123" }),
+      save: (token) => set({ token }),
       clear: () => set({ token: "" }),
     }),
     {
