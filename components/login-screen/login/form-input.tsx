@@ -7,7 +7,7 @@ type FormInputProps = {
   placeholder?: string;
   error?: boolean;
   value: string;
-  keyboardType?: "number-pad" | "default";
+  keyboardType?: "number-pad" | "email-address" | "default";
   isPassword?: boolean;
   onChangeText?: (text: string) => void;
 };
@@ -32,6 +32,8 @@ export default function FormInput({
           value={value}
           keyboardType={keyboardType}
           secureTextEntry={isPassword}
+          autoCapitalize="none"
+          autoCorrect={false}
         ></TextInput>
 
         {error && <Text style={styles.error}>This field is mandatory!</Text>}

@@ -57,14 +57,19 @@ export default function LoginScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Text style={styles.title}>Title</Text>
-        <FormInput label="E-mail" onChangeText={setEmail} value={email} />
+        <FormInput
+          label="E-mail"
+          onChangeText={setEmail}
+          value={email}
+          keyboardType="email-address"
+        />
         <FormInput
           label="Senha"
           onChangeText={setPassword}
           value={password}
           isPassword
         />
-        <Button onClick={handleLogin} />
+        <Button label={"Fazer login"} onClick={handleLogin} />
       </View>
     </FullScreen>
   );
