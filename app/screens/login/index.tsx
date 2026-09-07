@@ -69,7 +69,7 @@ export default function LoginScreen() {
           value={password}
           isPassword
         />
-        <Button label={"Fazer login"} onClick={handleLogin} />
+        <Button label={"Fazer login"} onClick={handleLogin} loading={loading} />
       </View>
     </FullScreen>
   );
