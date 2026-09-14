@@ -41,7 +41,7 @@ O app possui um único usuário (o próprio dono do negócio), que faz login via
 
 ## Protótipos de tela
 
-<!-- Seção reservada para protótipos de tela. -->
+Veja o protótipo navegável [aqui](https://www.figma.com/proto/krLjUnO4tBml66ADgFGG5m/Pendurator?node-id=1-415&p=f&t=ZTwKA0cGoNikXPgn-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A3)
 
 ---
 
