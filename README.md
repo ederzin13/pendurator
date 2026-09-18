@@ -12,6 +12,71 @@ O app possui um único usuário (o próprio dono do negócio), que faz login via
 
 ---
 
+## Como rodar
+
+Antes de rodar o projeto, confira se tem os seguintes itens instalados:
+
+- Node.js
+- Yarn
+- Expo Go no celular (ou emulador configurado)
+
+### Setup inicial e instalação de dependências
+
+Clone o repositório:
+
+```
+git clone https://github.com/ederzin13/pendurator.git
+```
+
+Navegue até a pasta:
+
+```
+cd pendurator
+```
+
+Em seguida, instale as dependências necessárias (esse projeto utiliza yarn e npm em conjunto).
+
+```
+# Primeiro rodamos o yarn...
+yarn
+
+# depois o npm
+npm i
+```
+
+### Configurando o Firebase
+
+Copie o conteúdo de `firebaseConfig.example.js` para um novo arquivo chamado `firebaseConfig.js`.
+
+Agora, é necessário preencher os campos com as credenciais do seu projeto no Firebase. Se ainda não tem um, consulte essa [documentação](https://firebase.google.com/docs/projects/learn-more?hl=pt-br). É necessário criar um projeto e cadastrar um app web. Dessa forma, as credenciais são criadas e podemos copiar para o arquivo. As credenciais também podem ser encontradas posteriormente nas configurações do Firebase Console.
+
+Uma vez que seu app está cadastrado em um projeto do Firebase, é necessário criar um usuário para acessar o Pendurator. No Firebase Console, navegue até a página do `Authentication`.
+
+Na aba **Método de login**:
+
+- Clique em "Vamos começar";
+- Escolha a opção de "E-mail/senha";
+- Ative e salve;
+
+Na aba **Usuários**:
+
+- Clique em "Adicionar usuário";
+- Preencha os campos e salve;
+
+Agora, com um usuário cadastrado, deve ser possível entrar no Pendurator através da tela de login com as credenciais salvas no Firebase.
+
+### Rodando o Pendurator
+
+No terminal, dentro da pasta do projeto, inicie o Expo:
+
+```
+yarn start
+```
+
+No menu do Expo, escolha a maneira que prefere rodar o aplicativo.
+
+---
+
 ### Funcionalidades prioritárias (MVP)
 
 - [x] Autenticação com e-mail e senha via Firebase
