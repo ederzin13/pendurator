@@ -48,7 +48,7 @@ npm i
 
 Copie o conteúdo de `firebaseConfig.example.js` para um novo arquivo chamado `firebaseConfig.js`.
 
-Agora, é necessário preencher os campos com as credenciais do seu projeto no Firebase. Se ainda não tem um, consulte essa [documentação](https://firebase.google.com/docs/projects/learn-more?hl=pt-br). É necessário criar um projeto e cadastrar um app web. Dessa forma, as credenciais são criadas e podemos copiar para o arquivo. As credenciais também podem ser encontradas posteriormente nas configurações do Firebase Console.
+Agora, é necessário preencher os campos com as credenciais do seu projeto no Firebase. Se ainda não tem um, consulte essa [documentação](https://firebase.google.com/docs/projects/learn-more?hl=pt-br). É necessário criar um projeto e cadastrar um app web. Dessa forma, as credenciais são criadas e podemos copiar para o `firebaseConfig.js`. As credenciais também podem ser encontradas posteriormente nas configurações do Firebase Console.
 
 Uma vez que seu app está cadastrado em um projeto do Firebase, é necessário criar um usuário para acessar o Pendurator. No Firebase Console, navegue até a página do `Authentication`.
 
