@@ -6,4 +6,6 @@ export const spacing = {
   radius: 16,
 
   margin: 20,
+
+  gap: 6,
 };

@@ -70,12 +70,14 @@ export default function LoginScreen() {
           onChangeText={setEmail}
           value={email}
           keyboardType="email-address"
+          placeholder="seu.email@exemplo.com"
         />
         <FormInput
           label="Senha"
           onChangeText={setPassword}
           value={password}
           isPassword
+          placeholder="••••••••"
         />
         <Button label={"Fazer login"} onClick={handleLogin} loading={loading} />
       </View>
