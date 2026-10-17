@@ -31,7 +31,7 @@ export default function Button({
       disabled={disabled || loading}
     >
       {loading ? (
-        <ActivityIndicator color="fff" />
+        <ActivityIndicator color="white" />
       ) : (
         <Text style={styles.text}>
           {label}
