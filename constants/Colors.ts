@@ -2,6 +2,7 @@ export const colors = {
   light: {
     //Background colors
     background: "#f9fafb",
+    formBackground: "#ecececff",
 
     //Text
 

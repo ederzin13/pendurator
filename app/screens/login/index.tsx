@@ -79,7 +79,11 @@ export default function LoginScreen() {
           isPassword
           placeholder="••••••••"
         />
-        <Button label={"Fazer login"} onClick={handleLogin} loading={loading} />
+        <Button
+          label={"Fazer login  "}
+          onClick={handleLogin}
+          loading={loading}
+        />
       </View>
     </FullScreen>
   );
@@ -88,7 +92,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: spacing.formPadding,
-    backgroundColor: "#E1E3E4",
+    backgroundColor: colors.light.formBackground,
     borderRadius: spacing.formRadius,
     width: "80%",
     gap: 20,

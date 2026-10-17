@@ -1,5 +1,7 @@
 import { sen } from "@/assets/fonts/custom-font";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { ReactNode } from "react";
 import {
   ActivityIndicator,
@@ -31,7 +33,10 @@ export default function Button({
       {loading ? (
         <ActivityIndicator color="fff" />
       ) : (
-        <Text style={styles.text}>{label}</Text>
+        <Text style={styles.text}>
+          {label}
+          <AntDesign name="arrow-right" size={13} color="white" />
+        </Text>
       )}
     </TouchableOpacity>
   );
@@ -39,10 +44,12 @@ export default function Button({
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
-    padding: spacing.innerPadding,
-    backgroundColor: "#ff7575",
-    borderRadius: 5,
+    height: 45,
+    width: 250,
+    backgroundColor: colors.accentColors.main,
+    borderRadius: spacing.radius,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   text: {
