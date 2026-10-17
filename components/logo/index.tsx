@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: spacing.radius,
     height: 50,
     width: 50,
-    borderWidth: 2,
-    borderColor: colors.accentColors.main,
+    // borderWidth: 2,
+    // borderColor: colors.accentColors.main,
   },
 });

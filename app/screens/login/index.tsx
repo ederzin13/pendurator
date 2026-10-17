@@ -3,6 +3,7 @@ import Button from "@/components/buttons/button";
 import FormInput from "@/components/login-screen/login/form-input";
 import Logo from "@/components/logo";
 import FullScreen from "@/components/screen-wrappers/full-screen";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import { loginWithEmail } from "@/services/auth";
@@ -58,7 +59,12 @@ export default function LoginScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
         <Logo />
-        <Text style={styles.title}>Pendurator</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Pendurator</Text>
+          <Text style={styles.text}>
+            Entre com sua conta para PENDURAR dívidas!
+          </Text>
+        </View>
         <FormInput
           label="E-mail"
           onChangeText={setEmail}
@@ -87,8 +93,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  titleContainer: {
+    alignItems: "center",
+  },
+
   title: {
     fontFamily: sen.bold,
     fontSize: typo.h1,
+  },
+
+  text: {
+    color: colors.light.innerText,
+    textAlign: "center",
   },
 });
