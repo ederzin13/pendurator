@@ -1,4 +1,11 @@
 export const colors = {
-  light: {},
+  light: {
+    //Background colors
+    background: "#f9fafb",
+  },
   dark: {},
+
+  accentColors: {
+    main: "#FF6565",
+  },
 };

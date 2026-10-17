@@ -1,6 +1,7 @@
 import { sen } from "@/assets/fonts/custom-font";
 import Button from "@/components/buttons/button";
 import FormInput from "@/components/login-screen/login/form-input";
+import Logo from "@/components/logo";
 import FullScreen from "@/components/screen-wrappers/full-screen";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
@@ -56,7 +57,8 @@ export default function LoginScreen() {
     <FullScreen center>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <Text style={styles.title}>Title</Text>
+        <Logo />
+        <Text style={styles.title}>Pendurator</Text>
         <FormInput
           label="E-mail"
           onChangeText={setEmail}
@@ -78,8 +80,8 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: spacing.formPadding,
-    backgroundColor: "#dddddd",
-    borderRadius: spacing.radius,
+    backgroundColor: "#E1E3E4",
+    borderRadius: spacing.formRadius,
     width: "80%",
     gap: 20,
     alignItems: "center",
