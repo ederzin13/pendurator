@@ -1,16 +1,17 @@
 import { sen } from "@/assets/fonts/custom-font";
 import AddClient from "@/components/buttons/add-client";
 import BackButton from "@/components/buttons/back-button";
+import ClientCard from "@/components/client-card";
 import Scrollable from "@/components/screen-wrappers/scrollable";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import { Stack } from "expo-router";
-import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function ClientScreen() {
   return (
-    <Scrollable center>
+    <Scrollable center gap={spacing.margin}>
       <View style={styles.header}>
         <Stack.Screen options={{ headerShown: false }} />
         <View style={styles.options}>
@@ -23,9 +24,13 @@ export default function ClientScreen() {
         </View>
       </View>
 
-      <View>
-        <Text style={styles.textBody}>Não tem nenhum cliente :(</Text>
-      </View>
+      {/* <Text style={styles.textBody}>Não tem nenhum cliente :(</Text> */}
+      <ClientCard />
+      <ClientCard />
+      <ClientCard />
+      <ClientCard />
+      <ClientCard />
+      <ClientCard />
     </Scrollable>
   );
 }
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     borderBottomWidth: 1,
-    borderBottomColor: "#c3c3c3",
+    borderBottomColor: colors.light.border,
     marginBottom: spacing.margin,
     padding: spacing.innerPadding,
   },
@@ -57,5 +62,10 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: sen.bold,
     fontSize: typo.h2,
+  },
+
+  scrollView: {
+    flex: 1,
+    gap: spacing.margin,
   },
 });
