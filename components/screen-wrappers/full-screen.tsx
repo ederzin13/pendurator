@@ -1,4 +1,6 @@
+import { colors } from "@/constants/Colors";
 import React from "react";
+import { StyleSheet } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 type ScreenWrapperProps = {
@@ -25,6 +27,8 @@ export default function FullScreen({
             alignItems: center ? "center" : "flex-start",
             gap: gap,
           },
+
+          styles.container,
         ]}
       >
         {children}
@@ -32,3 +36,9 @@ export default function FullScreen({
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.light.background,
+  },
+});

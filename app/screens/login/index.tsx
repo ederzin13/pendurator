@@ -1,7 +1,9 @@
 import { sen } from "@/assets/fonts/custom-font";
 import Button from "@/components/buttons/button";
 import FormInput from "@/components/login-screen/login/form-input";
+import Logo from "@/components/logo";
 import FullScreen from "@/components/screen-wrappers/full-screen";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import { loginWithEmail } from "@/services/auth";
@@ -56,20 +58,32 @@ export default function LoginScreen() {
     <FullScreen center>
       <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <Text style={styles.title}>Title</Text>
+        <Logo />
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Pendurator</Text>
+          <Text style={styles.text}>
+            Entre com sua conta para PENDURAR dívidas!
+          </Text>
+        </View>
         <FormInput
           label="E-mail"
           onChangeText={setEmail}
           value={email}
           keyboardType="email-address"
+          placeholder="seu.email@exemplo.com"
         />
         <FormInput
           label="Senha"
           onChangeText={setPassword}
           value={password}
           isPassword
+          placeholder="••••••••"
         />
-        <Button label={"Fazer login"} onClick={handleLogin} loading={loading} />
+        <Button
+          label={"Fazer login  "}
+          onClick={handleLogin}
+          loading={loading}
+        />
       </View>
     </FullScreen>
   );
@@ -78,15 +92,24 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: spacing.formPadding,
-    backgroundColor: "#dddddd",
-    borderRadius: spacing.radius,
+    backgroundColor: colors.light.formBackground,
+    borderRadius: spacing.formRadius,
     width: "80%",
     gap: 20,
+    alignItems: "center",
+  },
+
+  titleContainer: {
     alignItems: "center",
   },
 
   title: {
     fontFamily: sen.bold,
     fontSize: typo.h1,
+  },
+
+  text: {
+    color: colors.light.innerText,
+    textAlign: "center",
   },
 });

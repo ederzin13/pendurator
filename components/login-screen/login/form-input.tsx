@@ -1,5 +1,9 @@
 import { sen } from "@/assets/fonts/custom-font";
+import { colors } from "@/constants/Colors";
+import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 type FormInputProps = {
@@ -26,8 +30,23 @@ export default function FormInput({
       <Text style={styles.label}>{label}</Text>
 
       <View style={styles.input}>
+        {!isPassword ? (
+          <FontAwesome
+            name="at"
+            size={typo.h3}
+            color={colors.light.placeholder}
+          />
+        ) : (
+          <AntDesign
+            name="lock"
+            size={typo.h3}
+            color={colors.light.placeholder}
+          />
+        )}
+
         <TextInput
           placeholder={placeholder}
+          placeholderTextColor={colors.light.placeholder}
           onChangeText={onChangeText}
           value={value}
           keyboardType={keyboardType}
@@ -48,17 +67,23 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    height: 40,
-    width: 200,
-    borderWidth: 2,
-    borderColor: "#a6a6a6",
-    borderRadius: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    height: 45,
+    width: 250,
+    borderWidth: 1,
+    borderColor: colors.light.placeholder,
+    backgroundColor: colors.light.background,
+    borderRadius: 13,
     marginBottom: 10,
+    paddingLeft: 10,
+    gap: spacing.gap,
   },
 
   label: {
     fontSize: typo.s,
     fontFamily: sen.regular,
+    color: colors.light.text,
   },
 
   error: {
