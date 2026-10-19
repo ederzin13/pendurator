@@ -1,8 +1,8 @@
 import { sen } from "@/assets/fonts/custom-font";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function AddClient() {
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 120,
     borderRadius: spacing.radius,
-    backgroundColor: "#ff7575",
+    backgroundColor: colors.accentColors.main,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

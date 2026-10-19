@@ -1,7 +1,7 @@
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { router } from "expo-router";
-import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
 export default function BackButton() {
@@ -18,7 +18,7 @@ export default function BackButton() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff7575",
+    backgroundColor: colors.accentColors.main,
     height: 40,
     width: 40,
     borderRadius: spacing.radius,
