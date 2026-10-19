@@ -6,9 +6,9 @@
 
 ## Sobre o app
 
-**Pendurator** é um aplicativo mobile voltado para pequenos comerciantes, autônomos ou qualquer pessoa que precise registrar e acompanhar dívidas de clientes de forma simples e offline-first. A ideia é substituir o clássico "caderninho de fiado" por uma solução digital, organizada e acessível pelo celular.
+**Pendurator** é um aplicativo mobile voltado para pequenos comerciantes, autônomos ou qualquer pessoa que precise registrar e acompanhar dívidas de clientes de forma simples e eficiente. A ideia é substituir o clássico "caderninho de fiado" por uma solução digital, organizada e acessível pelo celular.
 
-O app possui um único usuário (o próprio dono do negócio), que faz login via Firebase Authentication. Todos os dados de clientes e dívidas são armazenados localmente no dispositivo com SQLite.
+O app possui um único usuário (o próprio dono do negócio), que faz login via Firebase Authentication. Todos os dados de clientes e dívidas são armazenados no Cloud Firestore.
 
 ---
 
@@ -91,7 +91,7 @@ No menu do Expo, escolha a maneira que prefere rodar o aplicativo.
 - [ ] Marcação de dívida como paga
 - [ ] Exclusão de dívida
 - [ ] Visualização do total em aberto por cliente
-- [ ] Persistência local de clientes e dívidas com SQLite
+- [ ] Persistência de clientes e dívidas com Cloud Firestore
 
 ### Funcionalidades adicionais (trabalhos futuros)
 
@@ -114,13 +114,13 @@ Veja o protótipo navegável [aqui](https://www.figma.com/proto/krLjUnO4tBml66AD
 
 ### Estratégia de persistência
 
-| Camada                 | Tecnologia                        | Finalidade                            |
-| ---------------------- | --------------------------------- | ------------------------------------- |
-| **Autenticação**       | Firebase Authentication           | Login e sessão do usuário único       |
-| **Sessão local**       | AsyncStorage (Zustand persist)    | Manutenção do token JWT entre sessões |
-| **Dados da aplicação** | SQLite (local, via `expo-sqlite`) | Clientes, dívidas e pagamentos        |
+| Camada                 | Tecnologia                     | Finalidade                            |
+| ---------------------- | ------------------------------ | ------------------------------------- |
+| **Autenticação**       | Firebase Authentication        | Login e sessão do usuário único       |
+| **Sessão local**       | AsyncStorage (Zustand persist) | Manutenção do token JWT entre sessões |
+| **Dados da aplicação** | Cloud Firestore                | Clientes, dívidas e pagamentos        |
 
-> **Importante:** não existe tabela de usuários no banco local. O app é projetado para uso por um único usuário autenticado via Firebase. Todo o dado armazenado no SQLite pertence implicitamente a esse usuário.
+> **Importante:** não existe tabela de usuários separada no banco. O app é projetado para uso por um único usuário autenticado via Firebase. Todo o dado armazenado no Firestore pertence implicitamente a esse usuário.
 
 ---
 
@@ -158,20 +158,28 @@ erDiagram
 
 ---
 
+## Atualizações desde o último Checkpoint
+
+Como a base do projeto já está pronta a algum tempo, busquei estudar sobre a configuração do Firestore (que existe em uma outra branch que ainda não subi pro repositório), já que devido a sugestão do professor, decidi mudar o banco de dados do aplicativo.
+
+Outro destaque é a atualização do design dos componentes para que fiquem mais parecidos com o protótipo e a definição e uso de constantes (na pasta constants) para padronizar os estilos das telas e componentes.
+
+---
+
 ## Planejamento de sprints
 
-A entrega final está prevista para **29 de novembro de 2026**. A partir de hoje (13/09), restam **~11 semanas**, organizadas em **6 sprints** com datas fixas — sendo as duas primeiras já concluídas.
+A entrega final está prevista para **29 de novembro de 2026**. A partir de hoje (13/09), restam **~11 semanas**, organizadas em **8 sprints** com datas fixas — sendo as duas primeiras já concluídas.
 
-| Sprint    | Período        | Duração   | Objetivo                               |
-| --------- | -------------- | --------- | -------------------------------------- |
-| **S1** ✅ | até ~28/08     | ~2 sem.   | Estrutura base e autenticação Firebase |
-| **S2** ✅ | ~29/08 – 12/09 | ~2 sem.   | Navegação e componentes reutilizáveis  |
-| **S3** 🔄 | 15/09 – 28/09  | 2 sem.    | Integração SQLite — CRUD de Clientes   |
-| **S4**    | 29/09 – 12/10  | 2 sem.    | CRUD de Dívidas e totais por cliente   |
-| **S5**    | 13/10 – 26/10  | 2 sem.    | UX, refinamento visual e protótipos    |
-| **S6**    | 27/10 – 09/11  | 2 sem.    | Funcionalidades complementares         |
-| **S7**    | 10/11 – 22/11  | ~1,5 sem. | Testes, validações e correção de bugs  |
-| **S8**    | 23/11 – 29/11  | 1 sem.    | Polimento final e entrega              |
+| Sprint    | Período        | Duração   | Objetivo                                               |
+| --------- | -------------- | --------- | ------------------------------------------------------ |
+| **S1** ✅ | até ~28/08     | ~2 sem.   | Estrutura base e autenticação Firebase                 |
+| **S2** ✅ | ~29/08 – 12/09 | ~2 sem.   | Navegação e componentes reutilizáveis                  |
+| **S3** 🔄 | 15/09 – 28/09  | 2 sem.    | Integração Cloud Firestore — CRUD de Clientes          |
+| **S4**    | 29/09 – 12/10  | 2 sem.    | Cloud Firestore — CRUD de Dívidas e totais por cliente |
+| **S5**    | 13/10 – 26/10  | 2 sem.    | UX, refinamento visual e protótipos                    |
+| **S6**    | 27/10 – 09/11  | 2 sem.    | Funcionalidades complementares                         |
+| **S7**    | 10/11 – 22/11  | ~1,5 sem. | Testes, validações e correção de bugs                  |
+| **S8**    | 23/11 – 29/11  | 1 sem.    | Polimento final e entrega                              |
 
 ### Detalhamento por sprint
 
@@ -188,34 +196,35 @@ A entrega final está prevista para **29 de novembro de 2026**. A partir de hoje
 - [x] Expo Router com Stack Navigator
 - [x] Dashboard com cards de navegação (Clientes / Dívidas)
 - [x] Esqueleto das telas de Clientes e Dívidas
-- [x] Componentes: `Button`, `FormInput`, `BackButton`, `AddClient`
+- [x] Componentes: `Button`, `FormInput`, `BackButton`, `AddClient`, `ClientCard`, `DashboardTab`, `Logo`
 - [x] Wrappers de tela: `FullScreen`, `Scrollable`
 
-#### Sprint 3 🔄 — 15/09 a 28/09 · SQLite — Clientes
+#### Sprint 3 🔄 — 15/09 a 28/09 · Cloud Firestore — Clientes
 
-- [ ] Instalar `expo-sqlite`
-- [ ] Criar schema e migrations (`clients`, `debts`)
-- [ ] Hook `useClients` com operações CRUD
-- [ ] Tela de Clientes com lista real (FlatList)
+- [x] Configurar e inicializar Cloud Firestore (`firebaseConfig.js`)
+- [ ] Modelagem e tipagem da coleção de clientes no Firestore
+- [ ] Hook/serviço `useClients` com operações CRUD no Firestore
+- [ ] Tela de Clientes com lista real (FlatList) integrada ao Firestore
 - [ ] Modal/tela de criação de cliente
 - [ ] Modal/tela de edição de cliente
 - [ ] Confirmação e exclusão de cliente
 
-#### Sprint 4 — 29/09 a 12/10 · SQLite — Dívidas
+#### Sprint 4 — 29/09 a 12/10 · Cloud Firestore — Dívidas
 
-- [ ] Hook `useDebts` com operações CRUD
-- [ ] Tela de dívidas por cliente (FlatList)
+- [ ] Modelagem e tipagem da coleção de dívidas no Firestore
+- [ ] Hook/serviço `useDebts` com operações CRUD no Firestore
+- [ ] Tela de dívidas por cliente (FlatList) integrada ao Firestore
 - [ ] Modal de criação de dívida (descrição, valor, data)
 - [ ] Toggle de "marcar como pago"
 - [ ] Cálculo e exibição de total em aberto por cliente
 
 #### Sprint 5 — 13/10 a 26/10 · UX e refinamento visual
 
-- [ ] Protótipos de tela (Figma ou equivalente)
+- [x] Protótipos de tela (Figma ou equivalente)
 - [ ] Animações de transição (react-native-reanimated)
 - [ ] Estados vazios com ilustração/mensagem amigável
 - [ ] Feedback de loading e erros inline
-- [ ] Consistência visual (tipografia, espaçamento, cores)
+- [x] Consistência visual (tipografia, espaçamento, cores)
 
 #### Sprint 6 — 27/10 a 09/11 · Funcionalidades complementares
 
@@ -227,7 +236,7 @@ A entrega final está prevista para **29 de novembro de 2026**. A partir de hoje
 
 - [ ] Testes manuais em dispositivo físico (Android)
 - [ ] Validações de formulário (campos obrigatórios, valor numérico positivo)
-- [ ] Tratamento de erros SQLite e Firebase
+- [ ] Tratamento de erros do Firebase (Auth e Firestore)
 - [ ] Revisão de acessibilidade (labels, tamanhos de toque)
 - [ ] Correção de bugs encontrados
 
