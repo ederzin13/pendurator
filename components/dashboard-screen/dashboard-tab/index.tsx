@@ -1,10 +1,10 @@
 import { sen } from "@/assets/fonts/custom-font";
+import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
-import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 type DashboardTabProps = {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     height: 60,
     width: "80%",
-    backgroundColor: "#ff7575",
+    backgroundColor: colors.accentColors.main,
     flexDirection: "row",
     justifyContent: "space-between",
     padding: spacing.innerPadding,
