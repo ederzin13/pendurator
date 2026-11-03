@@ -6,8 +6,9 @@ import Scrollable from "@/components/screen-wrappers/scrollable";
 import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
+import { clientesMock } from "@/mocks/clients";
 import { Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function ClientScreen() {
   return (
@@ -23,14 +24,19 @@ export default function ClientScreen() {
           <AddClient />
         </View>
       </View>
-
       {/* <Text style={styles.textBody}>Não tem nenhum cliente :(</Text> */}
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
+      <FlatList
+        data={clientesMock}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <ClientCard
+            name={item.name}
+            phoneNumber={item.phoneNumber}
+            value={item.value}
+          />
+        )}
+        contentContainerStyle={{ gap: spacing.margin }}
+      />
     </Scrollable>
   );
 }
