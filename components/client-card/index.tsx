@@ -46,16 +46,17 @@ export default function ClientCard({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light.background,
+    backgroundColor: colors.light.formBackground,
     padding: spacing.innerPadding,
     borderRadius: spacing.radius,
   },
 
   upperDiv: {
     flexDirection: "row",
-    gap: 90,
+    // gap: 90,
     borderBottomWidth: 1,
     borderBottomColor: colors.light.border,
+    justifyContent: "space-between",
   },
 
   lowerDiv: {
