@@ -2,18 +2,21 @@ import { sen } from "@/assets/fonts/custom-font";
 import AddClient from "@/components/buttons/add-client";
 import BackButton from "@/components/buttons/back-button";
 import ClientCard from "@/components/client-card";
-import Scrollable from "@/components/screen-wrappers/scrollable";
 import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
+import { clientesMock } from "@/mocks/clients";
 import { Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ClientScreen() {
+export default function ClientScreenFlatList() {
   return (
-    <Scrollable center gap={spacing.margin}>
+    <SafeAreaView style={styles.container}>
+      <Stack.Screen
+        options={{ headerShown: false, title: "Clientes (FlatList)" }}
+      />
       <View style={styles.header}>
-        <Stack.Screen options={{ headerShown: false }} />
         <View style={styles.options}>
           <BackButton />
           <Text style={styles.title}>Clientes</Text>
@@ -24,18 +27,32 @@ export default function ClientScreen() {
         </View>
       </View>
 
-      {/* <Text style={styles.textBody}>Não tem nenhum cliente :(</Text> */}
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-      <ClientCard />
-    </Scrollable>
+      <FlatList
+        data={clientesMock}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <ClientCard
+            name={item.name}
+            phoneNumber={item.phoneNumber}
+            value={item.value}
+          />
+        )}
+        contentContainerStyle={styles.listContent}
+        ListEmptyComponent={
+          <Text style={styles.textBody}>Não tem nenhum cliente :(</Text>
+        }
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.light.background,
+    padding: 20,
+  },
+
   header: {
     width: "100%",
     justifyContent: "space-between",
@@ -43,7 +60,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: colors.light.border,
-    marginBottom: spacing.margin,
     padding: spacing.innerPadding,
   },
 
@@ -57,6 +73,8 @@ const styles = StyleSheet.create({
   textBody: {
     fontFamily: sen.regular,
     fontSize: typo.h3,
+    textAlign: "center",
+    marginTop: spacing.margin,
   },
 
   title: {
@@ -64,8 +82,8 @@ const styles = StyleSheet.create({
     fontSize: typo.h2,
   },
 
-  scrollView: {
-    flex: 1,
+  listContent: {
+    padding: spacing.margin,
     gap: spacing.margin,
   },
 });

@@ -5,7 +5,17 @@ import { typo } from "@/constants/Typography";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function ClientCard() {
+type ClientCardProps = {
+  name: string;
+  phoneNumber: string;
+  value: number;
+};
+
+export default function ClientCard({
+  name,
+  phoneNumber,
+  value,
+}: ClientCardProps) {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.upperDiv}>
@@ -13,8 +23,8 @@ export default function ClientCard() {
           <View style={styles.placeholder}></View>
 
           <View>
-            <Text style={styles.clientName}>Eduardo Silva</Text>
-            <Text style={styles.phoneNumber}>(12)98765-4321</Text>
+            <Text style={styles.clientName}>{name}</Text>
+            <Text style={styles.phoneNumber}>{phoneNumber}</Text>
           </View>
         </View>
         <View>
@@ -28,7 +38,7 @@ export default function ClientCard() {
 
       <View style={styles.lowerDiv}>
         <Text style={styles.debtLabel}>Valor total devido:</Text>
-        <Text style={styles.debt}>R$15.000,00</Text>
+        <Text style={styles.debt}>R${value}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -36,16 +46,17 @@ export default function ClientCard() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light.background,
+    backgroundColor: colors.light.formBackground,
     padding: spacing.innerPadding,
     borderRadius: spacing.radius,
   },
 
   upperDiv: {
     flexDirection: "row",
-    gap: 90,
+    // gap: 90,
     borderBottomWidth: 1,
     borderBottomColor: colors.light.border,
+    justifyContent: "space-between",
   },
 
   lowerDiv: {
