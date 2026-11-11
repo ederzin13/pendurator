@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
   signInWithEmailAndPassword,
+  User,
 } from "firebase/auth";
 
 /**
@@ -11,14 +12,14 @@ import {
 export async function loginWithEmail(
   email: string,
   pass: string,
-): Promise<string> {
+): Promise<User> {
   const userCredential = await signInWithEmailAndPassword(
     auth,
     email.trim(),
     pass,
   );
-  const token = await userCredential.user.getIdToken();
-  return token;
+  // const token = await userCredential.user.getIdToken();
+  return userCredential.user;
 }
 
 /**
@@ -27,14 +28,14 @@ export async function loginWithEmail(
 export async function registerWithEmail(
   email: string,
   pass: string,
-): Promise<string> {
+): Promise<User> {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email.trim(),
     pass,
   );
-  const token = await userCredential.user.getIdToken();
-  return token;
+  // const token = await userCredential.user.getIdToken();
+  return userCredential.user;
 }
 
 /**
