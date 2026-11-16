@@ -4,20 +4,15 @@ import DashboardTab from "@/components/dashboard-screen/dashboard-tab";
 import FullScreen from "@/components/screen-wrappers/full-screen";
 import { typo } from "@/constants/Typography";
 import { logoutUser } from "@/services/auth";
-import useAuth from "@/states/useAuth";
 import { Stack } from "expo-router";
 import { StyleSheet, Text } from "react-native";
 
 export default function DashboardScreen() {
-  const { clear } = useAuth();
-
   const handleLogout = async () => {
     try {
       await logoutUser();
     } catch (e) {
       console.warn("Falha ao deslogar no Firebase", e);
-    } finally {
-      clear();
     }
   };
 

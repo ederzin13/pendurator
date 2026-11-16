@@ -7,23 +7,16 @@ import { colors } from "@/constants/Colors";
 import { spacing } from "@/constants/Spacing";
 import { typo } from "@/constants/Typography";
 import { loginWithEmail } from "@/services/auth";
-import useAuth from "@/states/useAuth";
 import { Stack } from "expo-router";
 import { useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 
 export default function LoginScreen() {
-  //utilizando o useAuth
-  const { token, save } = useAuth();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    // save(token);
-    // router.push("/screens/dashboard");
-
     if (!email.trim() || !password.trim()) {
       Alert.alert("Atenção", "Preencha o e-mail e a senha!");
       return;
@@ -31,10 +24,7 @@ export default function LoginScreen() {
 
     try {
       setLoading(true);
-
-      const token = await loginWithEmail(email, password);
-
-      save(token);
+      await loginWithEmail(email, password);
     } catch (error: any) {
       console.error("Erro no login :( :", error);
 
